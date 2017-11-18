@@ -4,6 +4,12 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 
+	<package name="default" namespace="/" extends="struts-default">
+		<action name="baseAction_*" class="baseAction" method="{1}">
+			<result name="success">/index.jsp</result>
+		</action>
+	
+	</package>
 
 
 </struts>

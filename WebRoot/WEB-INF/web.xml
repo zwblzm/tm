@@ -27,7 +27,7 @@
   
   <filter-mapping>
   	<filter-name>struts</filter-name>
-  	<url-pattern>/*</url-pattern>
+  	<url-pattern>*.do</url-pattern>
   </filter-mapping>
   
   

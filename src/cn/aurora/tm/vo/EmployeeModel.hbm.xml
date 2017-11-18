@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class table="tbl_sys_employee" name="cn.aurora.tm.vo.EmployeeModel">
+		<id name="id" column="id">
+			
+			<generator class="assigned"></generator>
+		</id>
+		<property name="name" column="name" length="50"></property>
+		<property name="password" column="password" length="50"></property>
+		<property name="capinfoId" column="capinfoId" length="50"></property>
+		<property name="state" column="state" length="1"></property>
+		
+		
+	
+	</class>
+
+</hibernate-mapping>
+
+

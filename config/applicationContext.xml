@@ -14,24 +14,40 @@
 		http://www.springframework.org/schema/tx 
 		http://www.springframework.org/schema/tx/spring-tx.xsd
 		">
+ 	<context:property-placeholder location="classpath:db.properties"/>
+ 	<context:component-scan base-package="cn.aurora.tm"></context:component-scan>
  
  	<!-- 使用spring注解开发 -->
- 	<context:component-scan base-package="cn.aurora.tm"></context:component-scan>
  	
  	<bean name="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
  		<property name="dataSource" ref="dataSource"></property>
- 	
+ 		<property name="hibernateProperties">
+ 			<props>
+ 				<prop key="hibernate.show_sql">true</prop>
+ 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+ 				<prop key="hibernate.format_sql">true</prop>
+ 				<prop key="hibernate.hbm2ddl.auto">update</prop>
+ 			
+ 			</props>
+
+ 		</property>
+ 		<property name="mappingDirectoryLocations">
+ 			<list>
+ 				<value>classpath:cn/aurora/tm/vo/</value>
+ 			</list>
+ 		
+ 		</property>
  	
  	</bean>
  	
- 	<bean name="dataSource" class="com.mchange.v2.c3p0.jboss.C3P0PooledDataSource">
- 		<property name="driverClass" value=""></property>
- 		<property name="jdbcUrl" value=""></property>
- 		<property name="user" value=""></property>
- 		<property name="password" value=""></property>
- 		<property name="minPoolSize" value=""></property>
- 		<property name="maxPoolSize" value=""></property>
- 		<property name="initialPoolSize" value=""></property>
+ 	<bean name="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+ 		<property name="driverClass" value="${driverClass}"></property>
+ 		<property name="jdbcUrl" value="${jdbcUrl}"></property>
+ 		<property name="user" value="${user}"></property>
+ 		<property name="password" value="${password}"></property>
+ 		<property name="minPoolSize" value="${minPoolSize}"></property>
+ 		<property name="maxPoolSize" value="${maxPoolSize}"></property>
+ 		<property name="initialPoolSize" value="${initialPoolSize}"></property>
  	</bean>
  	
  
